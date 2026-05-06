@@ -1,0 +1,12 @@
+:root {
+  --green: #0a6b2a;
+  --black: #111111;
+}
+body {
+  background: #fff;
+  color: var(--black);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+a { color: var(--green); text-decoration: none; }
+.container { padding: 1rem; }
