@@ -25,33 +25,46 @@
 ### Fase 3: Modelo y ORM Inicial
 - Fecha de implementación: Tercera fase
 - Stack: Spring Boot 3 + JPA/Hibernate + Spring Data JPA + H2 (en memoria)
-- Alcance: Entidades JPA básicas (AssetType, Asset) y repositorios Spring Data JPA; configuración mínima de data source; sin conexión real a PostgreSQL.
+- Alcance: Entidades JPA básicas (TipoActivo, Activo) y repositorios Spring Data JPA; configuración mínima de data source; sin conexión real a PostgreSQL.
 - Entregables:
-  - src/main/java/com/araujo/assetrans/model/AssetType.java
-  - src/main/java/com/araujo/assetrans/model/Asset.java
-  - src/main/java/com/araujo/assetrans/repository/AssetTypeRepository.java
-  - src/main/java/com/araujo/assetrans/repository/AssetRepository.java
+  - src/main/java/com/araujo/assetrans/model/TipoActivo.java
+  - src/main/java/com/araujo/assetrans/model/Activo.java
+  - src/main/java/com/araujo/assetrans/repository/TipoActivoRepository.java
+  - src/main/java/com/araujo/assetrans/repository/ActivoRepository.java
   - src/main/resources/application.properties
-- Propiedades añadidas:
-  - AssetType: id, name, description, codigo
-  - Asset: id, name, serialNumber, codigo, type (relación ManyToOne con AssetType)
+- Propiedades añadidas (todas en español):
+  - TipoActivo: id, nombre, descripcion, codigo
+  - Activo: id, nombre, numeroSerie, codigo, tipo (relación ManyToOne con TipoActivo)
 - Dependencias añadidas en pom.xml:
   - spring-boot-starter-data-jpa
+- Nombres de clases y propiedades EN ESPAÑOL según convenciones del proyecto.
 
 ### Fase 4: Gestión de Documentación y Mantenimientos
 - Fecha de implementación: Cuarta fase
 - Stack: Spring Boot 3 + JPA/Hibernate + Spring Data JPA + H2 (en memoria)
-- Alcance: Entidades Documentation y Maintenance asociadas a activos; repositorios Spring Data JPA; configuración mínima de relaciones entre entidades.
+- Alcance: Entidades Documento y Mantenimiento asociadas a activos; repositorios Spring Data JPA; configuración mínima de relaciones entre entidades.
 - Entregables:
-  - src/main/java/com/araujo/assetrans/model/Documentation.java
-  - src/main/java/com/araujo/assetrans/model/Maintenance.java
-  - src/main/java/com/aurojo/assetrans/repository/DocumentationRepository.java
-  - src/main/java/com/araujo/assetrans/repository/MaintenanceRepository.java
-- Propiedades Documentation:
-  - id, name, documentType, filePath, issueDate, asset (ManyToOne)
-- Propiedades Maintenance:
-  - id, description, maintenanceType, startDate, endDate, status, asset (ManyToOne)
+  - src/main/java/com/araujo/assetrans/model/Documento.java
+  - src/main/java/com/araujo/assetrans/model/Mantenimiento.java
+  - src/main/java/com/araujo/assetrans/repository/DocumentoRepository.java
+  - src/main/java/com/araujo/assetrans/repository/MantenimientoRepository.java
+- Propiedades Documento (en español):
+  - id, nombre, tipoDocumento, rutaArchivo, fechaEmision, activo (ManyToOne)
+- Propiedades Mantenimiento (en español):
+  - id, descripcion, tipoMantenimiento, fechaInicio, fechaFin, estado, activo (ManyToOne)
 - Restricciones: No modificar archivos de las fases anteriores; no implementar servicios ni lógica de negocio.
+- Nombres de clases y propiedades EN ESPAÑOL según convenciones del proyecto.
+
+### Fase 4.2: Skills del Proyecto
+- Fecha de implementación: Cuarta fase (parte 2)
+- Alcance: Creación de skills para guiar el desarrollo con IA
+- Entregables:
+  - skills/spring-boot/ - Skill principal de Spring Boot
+  - skills/jpa-entity/ - Skill de entidades JPA (nombres en español)
+  - skills/frontend/ - Skill de frontend (Thymeleaf + Bootstrap)
+- Reglas de las skills:
+  - JPA Entity: Todas las clases y propiedades EN ESPAÑOL
+  - Frontend: Thymeleaf + Bootstrap 5 con variables CSS del proyecto
 
 ## Propósito de este AGENTS.md
 - Servir como guía de ejecución para todas las fases y como plantilla para fases futuras.
@@ -59,11 +72,34 @@
 - Mantener trazabilidad de los cambios realizados en cada fase.
 
 ## Skills del Proyecto
-- **Spring Boot Developer**: `skills/spring-boot/SKILL.md`
-  - Skill para desarrollo Spring Boot 3 en ASSETRANS
-  - Incluye patrones de código, convenciones y ejemplos específicos del dominio
-  - Referencia: `skills/spring-boot/references/conventions.md` y `skills/spring-boot/references/domain-models.md`
-  - La IA debe consultar esta skill al trabajar con código Spring Boot del proyecto
+
+### 1. Spring Boot Developer
+- **Ubicación**: `skills/spring-boot/SKILL.md`
+- **Descripción**: Skill principal para desarrollo Spring Boot 3 en ASSETRANS
+- **Contenido**: Patrones de código, convenciones y ejemplos específicos del dominio
+- **Referencias**: 
+  - `skills/spring-boot/references/conventions.md`
+  - `skills/spring-boot/references/domain-models.md`
+- **Cuándo usarla**: Al trabajar con código Spring Boot del proyecto
+
+### 2. JPA Entity Developer
+- **Ubicación**: `skills/jpa-entity/SKILL.md`
+- **Descripción**: Skill para crear y modificar entidades JPA
+- **Regla principal**: TODOS los nombres de clases y propiedades EN ESPAÑOL
+- **Ejemplos**: TipoActivo (no AssetType), documento (no document), nombre (no name)
+- **Referencias**: `skills/jpa-entity/references/entity-examples.md`
+- **Cuándo usarla**: Al crear o modificar entidades JPA
+
+### 3. Frontend Developer
+- **Ubicación**: `skills/frontend/SKILL.md`
+- **Descripción**: Skill para desarrollo frontend con Thymeleaf y Bootstrap 5
+- **Contenido**: Plantillas, formularios, tablas, navegación, componentes
+- **Referencias**:
+  - `skills/frontend/references/thymeleaf-patterns.md`
+  - `skills/frontend/references/bootstrap-components.md`
+- **Cuándo usarla**: Al crear o modificar páginas HTML del proyecto
+
+**Nota**: La IA debe consultar la skill correspondiente según el tipo de trabajo que esté realizando.
 
 ## Stack Técnico del Proyecto
 - Framework: Spring Boot 3
