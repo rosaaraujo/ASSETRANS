@@ -38,10 +38,32 @@
 - Dependencias añadidas en pom.xml:
   - spring-boot-starter-data-jpa
 
+### Fase 4: Gestión de Documentación y Mantenimientos
+- Fecha de implementación: Cuarta fase
+- Stack: Spring Boot 3 + JPA/Hibernate + Spring Data JPA + H2 (en memoria)
+- Alcance: Entidades Documentation y Maintenance asociadas a activos; repositorios Spring Data JPA; configuración mínima de relaciones entre entidades.
+- Entregables:
+  - src/main/java/com/araujo/assetrans/model/Documentation.java
+  - src/main/java/com/araujo/assetrans/model/Maintenance.java
+  - src/main/java/com/aurojo/assetrans/repository/DocumentationRepository.java
+  - src/main/java/com/araujo/assetrans/repository/MaintenanceRepository.java
+- Propiedades Documentation:
+  - id, name, documentType, filePath, issueDate, asset (ManyToOne)
+- Propiedades Maintenance:
+  - id, description, maintenanceType, startDate, endDate, status, asset (ManyToOne)
+- Restricciones: No modificar archivos de las fases anteriores; no implementar servicios ni lógica de negocio.
+
 ## Propósito de este AGENTS.md
 - Servir como guía de ejecución para todas las fases y como plantilla para fases futuras.
 - Instrucciones para IA y para quien aplique los patches en el repositorio.
 - Mantener trazabilidad de los cambios realizados en cada fase.
+
+## Skills del Proyecto
+- **Spring Boot Developer**: `skills/spring-boot/SKILL.md`
+  - Skill para desarrollo Spring Boot 3 en ASSETRANS
+  - Incluye patrones de código, convenciones y ejemplos específicos del dominio
+  - Referencia: `skills/spring-boot/references/conventions.md` y `skills/spring-boot/references/domain-models.md`
+  - La IA debe consultar esta skill al trabajar con código Spring Boot del proyecto
 
 ## Stack Técnico del Proyecto
 - Framework: Spring Boot 3
