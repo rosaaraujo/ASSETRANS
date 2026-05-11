@@ -66,6 +66,30 @@
   - JPA Entity: Todas las clases y propiedades EN ESPAÑOL
   - Frontend: Thymeleaf + Bootstrap 5 con variables CSS del proyecto
 
+### Fase 5: Tipología de Documentos y Mantenimientos
+- Fecha de implementación: Quinta fase
+- Stack: Spring Boot 3 + JPA/Hibernate + Spring Data JPA + H2 (en memoria)
+- Alcance: Entidades TipoDocumento y TipoMantenimiento vinculadas a TipoActivo; repositorios con métodos de consulta por tipo de activo; configuración de relaciones jerárquicas.
+- Reglas de negocio implementadas:
+  - TipoDocumento pertenece a un TipoActivo (ManyToOne)
+  - TipoMantenimiento pertenece a un TipoActivo (ManyToOne)
+  - Un Activo solo puede tener Documentos cuyo TipoDocumento pertenezca a su mismo TipoActivo
+  - Un Activo solo puede tener Mantenimientos cuyo TipoMantenimiento pertenezca a su mismo TipoActivo
+- Entregables:
+  - src/main/java/com/araujo/assetrans/model/TipoDocumento.java
+  - src/main/java/com/araujo/assetrans/model/TipoMantenimiento.java
+  - src/main/java/com/araujo/assetrans/repository/TipoDocumentoRepository.java
+  - src/main/java/com/araujo/assetrans/repository/TipoMantenimientoRepository.java
+- Propiedades TipoDocumento (en español):
+  - id, nombre, descripcion, tipoActivo (ManyToOne con TipoActivo)
+- Propiedades TipoMantenimiento (en español):
+  - id, nombre, descripcion, tipoActivo (ManyToOne con TipoActivo)
+- Métodos de consulta añadidos:
+  - TipoDocumentoRepository.findByTipoActivoId()
+  - TipoMantenimientoRepository.findByTipoActivoId()
+- Restricciones: No modificar archivos de las fases anteriores; no implementar servicios ni lógica de validación de negocio.
+- Nombres de clases y propiedades EN ESPAÑOL según convenciones del proyecto.
+
 ## Propósito de este AGENTS.md
 - Servir como guía de ejecución para todas las fases y como plantilla para fases futuras.
 - Instrucciones para IA y para quien aplique los patches en el repositorio.
